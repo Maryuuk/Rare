@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WELCOME TO RARE*</title>
+    <link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
+
+    <!-- External CSS Files -->
+    <link th:href="@{/assets/external/animate.css/animate.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/external/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/external/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet" />
+    <link th:href="@{/assets/external/boxicons/css/boxicons.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/external/glightbox/css/glightbox.min.css}" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link th:href="@{/css/home.css}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header id="header" class="fixed-top header-inner-pages">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a th:href="@{/home}" class="logo"><img th:src="@{/img/logo.png}" class="d-inline-block align-text-top" /><span class="text-light">R A R E <span class="text-danger">*</span></span></a>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li>
+              <a class="nav-link scrollto active" href="#explore">Explore</a>
+            </li>
+            <li><a class="nav-link scrollto" href="#tattoos">Tattoos</a></li>
+            <li><a class="nav-link scrollto" href="#artists">Artists</a></li>
+            <li><a class="nav-link scrollto" href="#studios">Studios</a></li>
+            <li><a class="nav-link scrollto" th:href="@{/contact}">Contact</a></li>
+            <li sec:authorize="!isAuthenticated()"><a class="nav-link scrollto" th:href="@{/login}">Login</a></li>
+            <li sec:authorize="!isAuthenticated()"><a class="nav-link scrollto" th:href="@{/signup}">Sign up</a></li>
+            <li sec:authorize="isAuthenticated()"><a class="nav-link scrollto" href="#perfil"><span>Welcome <span sec:authentication="principal.username"></span></span></a></li>
+            <li sec:authorize="isAuthenticated()"><a class="nav-link scrollto" th:href="@{/logout}">Logout</a></li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+      </div>
+    </header>
+    <!-- END HEADER -->
+
+    <!-- EXPLORE SECTION -->
+    <section id="explore">
+      <div id="exploreCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <ol class="carousel-indicators" id="explore-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background-image: url(/img/explore/slide-1.png)">
+            <div class="carousel-container">
+              <div class="container">
+                <h2 class="animated fadeInDown">
+                  Welcome to
+                  <span>R A R E <span class="text-danger">*</span></span>
+                </h2>
+                <p class="animated fadeInUp">
+                  Join millions of people looking to find tattoo inspiration,
+                  discover artists and studios, and easily book tattoo
+                  appointments.
+                </p>
+                <a href="#get-started" class="btn-get-started animated fadeInUp scrollto">Get Started</a>
+              </div>
+            </div>
+          </div>
+          <!-- End slide 1 -->
+
+          <!-- Slide 2 -->
+          <div class="carousel-item" style="background-image: url(/img/explore/slide-2.jpg)">
+            <div class="carousel-container">
+              <div class="container">
+                <h2 class="animated fadeInDown">Find your artist.</h2>
+                <p class="animated fadeInUp">
+                  The easiest way to discover and connect with tattoo artists
+                  nearby.
+                </p>
+                <a href="#about" class="btn-get-started animated fadeInUp scrollto">Read More</a>
+              </div>
+            </div>
+          </div>
+          <!-- End slide 2 -->
+
+          <!-- Slide 3 -->
+          <div class="carousel-item" style="background-image: url(/img/explore/slide-3.jpg)">
+            <div class="carousel-container">
+              <div class="container">
+                <h2 class="animated fadeInDown">Get inspired. Get tattooed.</h2>
+                <p class="animated fadeInUp">
+                  Beautiful high-quality tattoos to inspire your next tattoo
+                  idea.
+                </p>
+                <a href="#about" class="btn-get-started animated fadeInUp scrollto">Read More</a>
+              </div>
+            </div>
+          </div>
+          <!-- End slide 3 -->
+
+          <!-- Slide 4 -->
+          <div class="carousel-item" style="background-image: url(/img/explore/slide-4.jpg)" >
+            <div class="carousel-container">
+              <div class="container">
+                <h2 class="animated fadeInDown">
+                  Get personalized recommendations.
+                </h2>
+                <p class="animated fadeInUp">
+                  Search through our curated recommendations for artists and
+                  studios in your area based on your preferred style and
+                  aesthetic.
+                </p>
+                <a href="#about" class="btn-get-started animated fadeInUp scrollto">Read More</a>
+              </div>
+            </div>
+          </div>
+          <!-- End slide 4 -->
+        </div>
+
+        <a class="carousel-control-prev" href="#exploreCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#exploreCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+    <!-- END EXPLORE SECTION -->
+
+    <!-- MAIN -->
+    <main id="main">
+      <!-- TATTOOS SECTION -->
+      <section id="tattoos" class="tattoos">
+        <div class="container-fluid">
+          <div class="section-title">
+            <h3>Choose your <span>design</span></h3>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+              <ul id="tattoos-filters">
+                <li data-filter="*" class="filter-active">All</li>
+                <li data-filter=".filter-blackwork">Blackwork</li>
+                <li data-filter=".filter-realism">Realism</li>
+                <li data-filter=".filter-tribal">Tribal</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row tattoos-container justify-content-center">
+            <div class="col-xl-10">
+              <div class="row">
+                <!-- Tattoos item 1 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 tattoos-item filter-blackwork">
+                  <div class="tattoos-wrap">
+                    <img th:src="@{/img/tattoos/tattoo-1.jpg}" class="img-fluid" alt=""/>
+                  </div>
+                </div>
+                <!-- End tattoos item 1 -->
+
+                <!-- Tattoos item 2 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 tattoos-item filter-tribal">
+                  <div class="tattoos-wrap">
+                    <img th:src="@{/img/tattoos/tattoo-9.jpg}" class="img-fluid" alt=""/>
+                  </div>
+                </div>
+                <!-- End tattoos item 2 -->
+
+                <!-- Tattoos item 3 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 tattoos-item filter-blackwork">
+                  <div class="tattoos-wrap">
+                    <img th:src="@{/img/tattoos/tattoo-2.jpg}" class="img-fluid" alt=""/>
+                  </div>
+                </div>
+                <!-- End tattoos item 3 -->
+
+                <!-- Tattoos item 4 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 tattoos-item filter-realism">
+                  <div class="tattoos-wrap">
+                    <img th:src="@{/img/tattoos/tattoo-5.png}" class="img-fluid" alt=""/>
+                  </div>
+                </div>
+                <!-- End tattoos item 4 -->
+
+                <!-- Tattoos item 5 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 tattoos-item filter-tribal">
+                  <div class="tattoos-wrap">
+                    <img th:src="@{/img/tattoos/tattoo-10.jpg}" class="img-fluid" alt=""/>
+                  </div>
+                </div>
+                <!-- End tattoos item 5 -->
+
+                <!-- Tattoos item 6 -->
+                <div
+                  class="col-xl-3 col-lg-4 col-md-6 tattoos-item filter-blackwork">
+                  <div class="tattoos-wrap">
+                    <img th:src="@{/img/tattoos/tattoo-3.jpg}" class="img-fluid" alt=""/>
+                  </div>
+                </div>
+                <!-- End tattoos item 6 -->
+
+                <!-- Tattoos item 7 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 tattoos-item filter-realism">
+                  <div class="tattoos-wrap">
+                    <img th:src="@{/img/tattoos/tattoo-6.png}" class="img-fluid" alt=""/>
+                  </div>
+                </div>
+                <!-- End tattoos item 7 -->
+
+                <!-- Tattoos item 8 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 tattoos-item filter-realism">
+                  <div class="tattoos-wrap">
+                    <img th:src="@{/img/tattoos/tattoo-7.jpg}" class="img-fluid" alt=""/>
+                  </div>
+                </div>
+                <!-- End tattoos item 8 -->
+
+                <!-- Tattoos item 9 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 tattoos-item filter-tribal">
+                  <div class="tattoos-wrap">
+                    <img th:src="@{/img/tattoos/tattoo-11.jpg}" class="img-fluid" alt=""/>
+                  </div>
+                </div>
+                <!-- End tattoos item 9 -->
+
+                <!-- Tattoos item 10 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 tattoos-item filter-tribal">
+                  <div class="tattoos-wrap">
+                    <img th:src="@{/img/tattoos/tattoo-12.jpg}" class="img-fluid" alt=""/>
+                  </div>
+                </div>
+                <!-- End tattoos item 10 -->
+
+                <!-- Tattoos item 11 -->
+                <div
+                  class="col-xl-3 col-lg-4 col-md-6 tattoos-item filter-blackwork">
+                  <div class="tattoos-wrap">
+                    <img th:src="@{/img/tattoos/tattoo-4.jpg}" class="img-fluid" alt=""/>
+                  </div>
+                </div>
+                <!-- End tattoos item 11 -->
+
+                <!-- Tattoos item 12 -->
+                <div class="col-xl-3 col-lg-4 col-md-6 tattoos-item filter-realism">
+                  <div class="tattoos-wrap">
+                    <img th:src="@{/img/tattoos/tattoo-8.jpg}" class="img-fluid" alt=""/>
+                  </div>
+                </div>
+                <!-- End tattoos item 12 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END TATTOOS SECTION -->
+
+      <!-- ARTISTS SECTION -->
+      <section id="artists" class="artists">
+        <div class="container-fluid">
+          <div class="section-title">
+            <h3>Meet the <span>best </span>professionals</h3>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-xl-10">
+              <div class="row">
+                <!-- Artists item 1 -->
+                <div class="col-lg-6">
+                  <div class="artists-item">
+                    <img th:src="@{/img/artists/artist-1.jpg}" class="artists-img" alt=""/>
+                    <h3><a href="#artist1">Pablo Frias</a></h3>
+                    <h4>Inknation Studio</h4>
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      Pablo Frias is a master of colors! His colorful pieces
+                      stand out immediately and are really one one of a kind.
+                      Pablo works out of the renowned InkNation studio in NYC.
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div>
+                <!-- End artists item 1 -->
+
+                <!-- Artists item 2 -->
+                <div class="col-lg-6">
+                  <div class="artists-item mt-4 mt-lg-0">
+                    <img th:src="@{/img/artists/artist-2.jpg}" class="artists-img" alt=""/>
+                    <h3><a href="#artist2">Alejandro Romano</a></h3>
+                    <h4>Stefano's Tattoo Studio NYC</h4>
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      Alejandro is an artist at Stefano's Tattoo Studio. He is
+                      great with black&grey tattoos and is extremely precise. He
+                      also isn't afraid to use some bright colors!
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div>
+                <!-- End artists item 2 -->
+
+                <!-- Artists item 3 -->
+                <div class="col-lg-6">
+                  <div class="artists-item mt-4">
+                    <img th:src="@{/img/artists/artist-3.jpg}" class="artists-img" alt=""/>
+                    <h3><a href="#artist3">Mattia Bretti</a></h3>
+                    <h4>Soho Ink</h4>
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      Mattia has been in the tattoo business since 1999 and an
+                      artist his entire life. He is an American traditional
+                      artist who work consisting of bold outline, heavy shading
+                      and vibrant colors. Mattia truly enjoys any tattoo that
+                      challenges him to be a better artist and is fun to do.
+                      Mattia is on the current season of Ink Master.
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div>
+                <!-- End artists item 3 -->
+
+                <!-- Artists item 4 -->
+                <div class="col-lg-6">
+                  <div class="artists-item mt-4">
+                    <img th:src="@{/img/artists/artist-4.jpg}" class="artists-img" alt=""/>
+                    <h3><a href="#artist4">Darwin Enriquez</a></h3>
+                    <h4>Inknation Studio</h4>
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      Darwin Enriquez entered the world of body art at 20 years
+                      of age in his hometown of Valencia, Venezuela, where he
+                      began work creating designs for a tattoo shop. During his
+                      stint at the tattoo shop, he developed his artistic
+                      talents and felt an instant attraction to the art-form of
+                      tattooing.
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div>
+                <!-- End artists item 4 -->
+
+                <!-- Artists item 5 -->
+                <div class="col-lg-6">
+                  <div class="artists-item mt-4">
+                    <img th:src="@{/img/artists/artist-5.jpg}" class="artists-img" alt=""/>
+                    <h3><a href="#artist5">Benjamin Flores</a></h3>
+                    <h4>Five Points Tattoo NYC</h4>
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      Benjamin is an artist at Five Points Tattoo Studio in NY.
+                      He specializes in Traditional tattoos.
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div>
+                <!-- End artists item 5 -->
+
+                <!-- Artists item 6 -->
+                <div class="col-lg-6">
+                  <div class="artists-item mt-4">
+                    <img th:src="@{/img/artists/artist-6.jpg}" class="artists-img" alt=""/>
+                    <h3><a href="#artist6">Roshi Kameha</a></h3>
+                    <h4>Asylum Tattoo</h4>
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      Roshi tattoos out of Asylum Studio in the Bronx. He is a
+                      multi-talented artist and some of his specialties include
+                      lettering and fine line tattoos.
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                  </div>
+                </div>
+                <!-- End artists item 6 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END ARTISTS SECTION -->
+
+      <!-- STUDIOS SECTION -->
+      <section id="studios" class="studios">
+        <div class="container-fluid">
+          <div class="section-title">
+            <h3>Find your <span>nearest </span>studio</h3>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-xl-10">
+              <div class="row">
+                <!-- Studios item 1 -->
+                <div class="col-lg-4 col-md-6 icon-box">
+                  <div class="icon"><i class="bi bi-shop"></i></div>
+                  <h4 class="name"><a href="#studio1">Inknation Studio</a></h4>
+                  <p class="location">
+                    <i class="bi bi-geo-alt"></i> 56 W 45 TH ST, New york, NY
+                  </p>
+                </div>
+                <!-- End studios item 1 -->
+
+                <!-- Studios item 2 -->
+                <div class="col-lg-4 col-md-6 icon-box">
+                  <div class="icon"><i class="bi bi-shop"></i></div>
+                  <h4 class="name"><a href="#studio2">10 Thousand Foxes</a></h4>
+                  <p class="location">
+                    <i class="bi bi-geo-alt"></i> 213 Montrose Avenue, New York, NY
+                  </p>
+                </div>
+                <!-- End studios item 2 -->
+
+                <!-- Studios item 3 -->
+                <div class="col-lg-4 col-md-6 icon-box">
+                  <div class="icon"><i class="bi bi-shop"></i></div>
+                  <h4 class="name"><a href="#studio3">Asylum Tattoo</a></h4>
+                  <p class="location">
+                    <i class="bi bi-geo-alt"></i> 3116 E Tremont Ave, Bronx, NY
+                  </p>
+                </div>
+                <!-- End studios item 3 -->
+                
+                <!-- Studios item 4 -->
+                <div class="col-lg-4 col-md-6 icon-box">
+                  <div class="icon"><i class="bi bi-shop"></i></div>
+                  <h4 class="name"><a href="#studio4">Soho Ink</a></h4>
+                  <p class="location">
+                    <i class="bi bi-geo-alt"></i> 285 Lafayette St., New York, NY
+                  </p>
+                </div>
+                <!-- End studios item 4 -->
+
+                <!-- Studios item 5 -->
+                <div class="col-lg-4 col-md-6 icon-box">
+                  <div class="icon"><i class="bi bi-shop"></i></div>
+                  <h4 class="name">
+                    <a href="#studio5">Stefano's Tattoo Studio NYC</a>
+                  </h4>
+                  <p class="location">
+                    <i class="bi bi-geo-alt"></i> 143 N 4th St, Brooklyn, New York
+                  </p>
+                </div>
+                <!-- End studios item 5 -->
+
+                <!-- Studios item 6 -->
+                <div class="col-lg-4 col-md-6 icon-box">
+                  <div class="icon"><i class="bi bi-shop"></i></div>
+                  <h4 class="name">
+                    <a href="#studio6">Five Points Tattoo NYC</a>
+                  </h4>
+                  <p class="location">
+                    <i class="bi bi-geo-alt"></i> 127 Lafayette St, SoHo, New York, NY
+                  </p>
+                </div>
+                <!-- End studios item 6 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END STUDIOS SECTION -->
+    </main>
+    <!-- END MAIN -->
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-xl-10">
+              <div class="row">
+                <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>Sections</h4>
+                  <ul>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#explore">Explore</a>
+                    </li>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#tattoos">Tattoos</a>
+                    </li>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#artists">Artists</a>
+                    </li>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#studios">Studios</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>Company</h4>
+                  <ul>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#aboutus">About us</a>
+                    </li>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#help">Help</a>
+                    </li>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a th:href="@{/contact}">Contact</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>Legal</h4>
+                  <ul>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#termsofservice">Terms of service</a>
+                    </li>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#privacypolicy">Privacy policy</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-info">
+                  <h4>More info</h4>
+                  <div class="social-links mt-3">
+                    <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram"></i></a>
+                    <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter"></i></a>
+                    <a href="https://es-es.facebook.com/" class="facebook"><i class="bx bxl-facebook"></i></a>
+                    <a href="https://es.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="copyright">
+          &copy; 2021 <strong><span>R A R E <span class="text-danger">*</span></span></strong><br>All Rights Reserved
+        </div>
+      </div>
+    </footer>
+    <!-- END FOOTER -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- External JS Files -->
+    <script th:src="@{/assets/external/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/assets/external/glightbox/js/glightbox.min.js}"></script>
+    <script th:src="@{/assets/external/isotope-layout/isotope.pkgd.min.js}"></script>
+
+    <!-- Main JS File -->
+    <script th:src="@{/assets/js/main.js}"></script>
+  </body>
+</html>

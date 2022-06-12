@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SIGN UP</title>
+    <link rel="icon" type="image/png" th:href="@{/img/logo.png}" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
+
+    <!-- External CSS Files -->
+    <link th:href="@{/assets/external/animate.css/animate.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/external/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/external/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet" />
+    <link th:href="@{/assets/external/boxicons/css/boxicons.min.css}" rel="stylesheet" />
+    <link th:href="@{/assets/external/glightbox/css/glightbox.min.css}" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link th:href="@{/css/login.css}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header id="header" class="fixed-top header-inner-pages">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a th:href="@{/home}" class="logo"><img th:src="@{/img/logo.png}" class="d-inline-block align-text-top" /><span class="text-light">R A R E <span class="text-danger">*</span></span></a>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li>
+              <a class="nav-link scrollto" href="#explore">Explore</a>
+            </li>
+            <li><a class="nav-link scrollto" href="#tattoos">Tattoos</a></li>
+            <li><a class="nav-link scrollto" href="#artists">Artists</a></li>
+            <li><a class="nav-link scrollto" href="#studios">Studios</a></li>
+            <li><a class="nav-link scrollto" th:href="@{/contact}">Contact</a></li>
+            <li sec:authorize="!isAuthenticated()"><a class="nav-link scrollto" th:href="@{/login}">Login</a></li>
+            <li sec:authorize="!isAuthenticated()"><a class="nav-link scrollto active" th:href="@{/signup}">Sign up</a></li>
+            <li sec:authorize="isAuthenticated()"><a class="nav-link scrollto" href="#perfil"><span>Welcome <span sec:authentication="principal.username"></span></span></a></li>
+            <li sec:authorize="isAuthenticated()"><a class="nav-link scrollto" th:href="@{/logout}">Logout</a></li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+      </div>
+    </header>
+    <!-- END HEADER -->
+
+    <!-- MAIN -->
+    <main id="main">
+      <!-- SIGNUP -->
+      <section id="contact" class="contact">
+        <div class="container-fluid">
+
+          <div class="row justify-content-center">
+            <div class="col-xl-10">
+              <div class="row justify-content-center">
+							<div class="col-lg-5 border border-danger rounded mt-5 pb-5">
+								<div th:if=${param.success}>
+									<div class="alert alert-success mt-3">Successfully registered!</div>
+								</div>
+								<div th:if=${param.error}>
+									<div class="alert alert-danger mt-3">This email already exists!</div>
+								</div>
+								<div class="section-title">
+									<h3>
+										Sign<span>up</span>
+									</h3>
+								</div>
+								<form th:action="@{/signup}" method="post" th:object="${usuario}" role="form"
+									class="questions-form">
+									<div class="form-group mt-3 mt-md-4">
+										<label for="nombre">First name</label> <input type="text"
+											name="nombre" class="form-control" id="nombre" th:field="*{nombre}" required />
+									</div>
+									<div class="form-group mt-3 mt-md-4">
+										<label for="apellido">Last name</label> <input type="text"
+											name="apellido" class="form-control" id="apellido" th:field="*{apellido}" required />
+									</div>
+									<div class="form-group mt-3 mt-md-4">
+										<label for="email">Email</label> <input type="email"
+											class="form-control" name="email" id="email" th:field="*{email}" required />
+									</div>
+									<div class="form-group mt-3 mt-md-4">
+										<label for="password">Password</label> <input type="password"
+											class="form-control" name="password" id="password" th:field="*{password}" required />
+									</div>
+									<div class="text-center mt-md-5">
+										<button type="submit">Signup</button>
+										<div class="mt-3">
+											<span>If you are registered, log in <a th:href="@{/login}">here</a>.</span>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END SIGNUP -->
+    </main>
+    <!-- END MAIN -->
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-xl-10">
+              <div class="row">
+                <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>Sections</h4>
+                  <ul>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#explore">Explore</a>
+                    </li>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#tattoos">Tattoos</a>
+                    </li>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#artists">Artists</a>
+                    </li>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#studios">Studios</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>Company</h4>
+                  <ul>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#aboutus">About us</a>
+                    </li>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#help">Help</a>
+                    </li>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a th:href="@{/contact}">Contact</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>Legal</h4>
+                  <ul>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#termsofservice">Terms of service</a>
+                    </li>
+                    <li>
+                      <i class="bx bx-chevron-right"></i>
+                      <a href="#privacypolicy">Privacy policy</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-info">
+                  <h4>More info</h4>
+                  <div class="social-links mt-3">
+                    <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram"></i></a>
+                    <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter"></i></a>
+                    <a href="https://es-es.facebook.com/" class="facebook"><i class="bx bxl-facebook"></i></a>
+                    <a href="https://es.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="copyright">
+          &copy; 2021 <strong><span>R A R E <span class="text-danger">*</span></span></strong><br>All Rights Reserved
+        </div>
+      </div>
+    </footer>
+    <!-- END FOOTER -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- External JS Files -->
+    <script th:src="@{/assets/external/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/assets/external/glightbox/js/glightbox.min.js}"></script>
+    <script th:src="@{/assets/external/isotope-layout/isotope.pkgd.min.js}"></script>
+
+    <!-- Main JS File -->
+    <script th:src="@{/assets/js/main.js}"></script>
+  </body>
+</html>
