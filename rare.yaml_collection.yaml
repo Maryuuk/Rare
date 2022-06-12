@@ -1,0 +1,11 @@
+---
+info:
+  _postman_id: 8e768558-b5fe-4951-8861-b33fe7a956cb
+  name: New Collection
+  schema: https://schema.getpostman.com/json/collection/v2.1.0/collection.json
+item:
+- name: New Request
+  request:
+    method: GET
+    header: []
+  response: []
